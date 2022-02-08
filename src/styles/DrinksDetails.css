@@ -1,0 +1,20 @@
+.div-thumbnail {
+  display: flex;
+  justify-content: center;
+}
+
+.thumbnail {
+  width: 350px;
+}
+
+.group-title {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.details-recommended {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}

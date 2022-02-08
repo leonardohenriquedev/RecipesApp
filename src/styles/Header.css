@@ -1,0 +1,11 @@
+.div-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.header-title {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}

@@ -1,0 +1,21 @@
+.div-recommended {
+  display: flex;
+  margin-bottom: 50px;
+  overflow-y: scroll;
+  width: 80%;
+}
+
+.recommended {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.img-recommended {
+  width: 150px;
+}
+
+.btn-start {
+  bottom: 0;
+  position: fixed;
+}
