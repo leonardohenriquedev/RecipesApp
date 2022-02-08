@@ -13,7 +13,7 @@ function Header({ title, searchBar }) {
   };
 
   return (
-    <div>
+    <div className="header">
       <div className="div-header">
         <a href="/profile">
           <img
@@ -21,20 +21,20 @@ function Header({ title, searchBar }) {
             type="image/svg+xml"
             alt="Profile Icon"
             data-testid="profile-top-btn"
-            src={ profileIcon }
+            src={profileIcon}
           />
         </a>
 
         <h1 data-testid="page-title">{title}</h1>
 
         {searchBar && (
-          <a href={ SearchBar } onClick={ handleClick }>
+          <a href={SearchBar} onClick={handleClick}>
             <img
-              className="serchIcon"
+              className="searchIcon"
               type="image/svg+xml"
               alt="Sherch Icon"
               data-testid="search-top-btn"
-              src={ searchIcon }
+              src={searchIcon}
             />
           </a>
         )}

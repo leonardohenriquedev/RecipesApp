@@ -1,11 +1,24 @@
+.header {
+  width: 100%;
+}
+
 .div-header {
+  padding: 5px;
+  width: 100%;
   align-items: center;
   display: flex;
   justify-content: space-evenly;
+  background-color: #d10404;
+  color: rgb(255, 255, 255);
 }
 
 .header-title {
-  color: black;
   cursor: pointer;
   text-decoration: none;
+}
+
+.profileIcon,
+.searchIcon {
+  filter: invert(99%) sepia(21%) saturate(5%) hue-rotate(230deg)
+    brightness(109%) contrast(97%);
 }

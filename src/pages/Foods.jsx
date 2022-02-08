@@ -6,13 +6,11 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Card from '../components/Card';
 
+import '../styles/Foods.css';
+
 export default function Foods() {
-  const {
-    searchData,
-    dataFoods,
-    categoriesFoods,
-    recipesByIngredients,
-  } = useContext(Context);
+  const { searchData, dataFoods, categoriesFoods, recipesByIngredients } =
+    useContext(Context);
 
   const max = 12;
 
@@ -37,28 +35,30 @@ export default function Foods() {
 
   function renderDefault() {
     return (
-      <div>
+      <div className="recipesContainer">
         {filteredFoods.length > 0 ? (
-          filteredFoods.map(({ idMeal, strMeal, strMealThumb }, index) => (
-            <Card
-              key={ idMeal }
-              name={ strMeal }
-              img={ strMealThumb }
-              index={ index }
-              id={ idMeal }
-            />
-          ))
+          <div className="recipesBox">
+            {filteredFoods.map(({ idMeal, strMeal, strMealThumb }, index) => (
+              <Card
+                key={idMeal}
+                name={strMeal}
+                img={strMealThumb}
+                index={index}
+                id={idMeal}
+              />
+            ))}
+          </div>
         ) : (
-          <div>
-            {dataFoods.length > 0
-              && dataFoods.map(({ idMeal, strMeal, strMealThumb }, index) => (
+          <div className="recipesBox">
+            {dataFoods.length > 0 &&
+              dataFoods.map(({ idMeal, strMeal, strMealThumb }, index) => (
                 <Card
                   data
-                  key={ idMeal }
-                  name={ strMeal }
-                  img={ strMealThumb }
-                  index={ index }
-                  id={ idMeal }
+                  key={idMeal}
+                  name={strMeal}
+                  img={strMealThumb}
+                  index={index}
+                  id={idMeal}
                 />
               ))}
           </div>
@@ -70,60 +70,69 @@ export default function Foods() {
   function renderSearch() {
     return searchData.length > 0
       ? searchData
-        .slice(0, max)
-        .map(({ idMeal, strMeal, strMealThumb }, index) => (
-          <Card
-            search
-            key={ idMeal }
-            name={ strMeal }
-            img={ strMealThumb }
-            index={ index }
-            id={ idMeal }
-          />
-        ))
+          .slice(0, max)
+          .map(({ idMeal, strMeal, strMealThumb }, index) => (
+            <Card
+              search
+              key={idMeal}
+              name={strMeal}
+              img={strMealThumb}
+              index={index}
+              id={idMeal}
+            />
+          ))
       : renderDefault();
   }
 
   return (
-    <div>
-      <Header title="Foods" />
-      <button
-        data-testid="All-category-filter"
-        type="button"
-        value="all"
-        onClick={ changeCategory }
-      >
-        All
-      </button>
-      {categoriesFoods.length > 0
-        && categoriesFoods.map(({ strCategory }) => (
+    <div className="mainBackGround">
+      <div className="mainPage">
+        <Header title="Foods" />
+        <div className="mainButtons">
           <button
-            key={ strCategory }
+            className="mainButton"
+            data-testid="All-category-filter"
             type="button"
-            value={ strCategory }
-            data-testid={ `${strCategory}-category-filter` }
-            onClick={ changeCategory }
+            value="all"
+            onClick={changeCategory}
           >
-            {strCategory}
+            All
           </button>
-        ))}
+          {categoriesFoods.length > 0 &&
+            categoriesFoods.map(({ strCategory }) => (
+              <button
+                className="mainButton"
+                key={strCategory}
+                type="button"
+                value={strCategory}
+                data-testid={`${strCategory}-category-filter`}
+                onClick={changeCategory}
+              >
+                {strCategory}
+              </button>
+            ))}
+        </div>
+        {recipesByIngredients.length > 0 ? (
+          <div className="recipesBox">
+            {recipesByIngredients.map(
+              ({ idMeal, strMeal, strMealThumb }, index) => (
+                <Card
+                  byIngredients
+                  key={idMeal}
+                  name={strMeal}
+                  img={strMealThumb}
+                  index={index}
+                  id={idMeal}
+                />
+              )
+            )}
+          </div>
+        ) : (
+          renderSearch()
+        )}
 
-      {recipesByIngredients.length > 0
-        ? recipesByIngredients.map(
-          ({ idMeal, strMeal, strMealThumb }, index) => (
-            <Card
-              byIngredients
-              key={ idMeal }
-              name={ strMeal }
-              img={ strMealThumb }
-              index={ index }
-              id={ idMeal }
-            />
-          ),
-        )
-        : renderSearch()}
-
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 }

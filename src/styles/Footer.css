@@ -1,0 +1,14 @@
+.footer {
+  background-color: #d10404;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  padding: 3px 0;
+}
+
+.footerIcon {
+  filter: invert(99%) sepia(21%) saturate(5%) hue-rotate(230deg)
+    brightness(109%) contrast(97%);
+}

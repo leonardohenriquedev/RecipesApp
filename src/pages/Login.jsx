@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Context from '../context/Context';
 
+import '../styles/Login.css';
+
 export default function Login() {
   const { setEmail, setPassword, email } = useContext(Context);
   const [emailIsValid, setEmailIsValid] = useState();
@@ -39,38 +41,45 @@ export default function Login() {
   }
 
   return (
-    <div className="login-box">
-      <h1>Login</h1>
-      <label htmlFor="email">
-        <input
-          type="email"
-          name="email"
-          id="email"
-          data-testid="email-input"
-          placeholder="email"
-          autoComplete="off"
-          onChange={ (e) => handleEmail(e.target.value) }
-        />
-      </label>
-      <label htmlFor="password">
-        <input
-          type="password"
-          name="password"
-          id="password"
-          data-testid="password-input"
-          placeholder="password"
-          autoComplete="off"
-          onChange={ (e) => handlePassword(e.target.value) }
-        />
-      </label>
-      <button
-        type="button"
-        data-testid="login-submit-btn"
-        disabled={ !(emailIsValid && passwordIsValid) }
-        onClick={ handleClick }
-      >
-        Enter
-      </button>
+    <div className="backGroundLogin">
+      <div className="loginPage">
+        <div className="loginBox">
+          <h1 className="loginTitle">Recipes App</h1>
+          <label htmlFor="email">
+            <input
+              className="loginInput"
+              type="email"
+              name="email"
+              id="email"
+              data-testid="email-input"
+              placeholder="email"
+              autoComplete="off"
+              onChange={(e) => handleEmail(e.target.value)}
+            />
+          </label>
+          <label htmlFor="password">
+            <input
+              className="loginInput"
+              type="password"
+              name="password"
+              id="password"
+              data-testid="password-input"
+              placeholder="password"
+              autoComplete="off"
+              onChange={(e) => handlePassword(e.target.value)}
+            />
+          </label>
+          <button
+            className="loginButton"
+            type="button"
+            data-testid="login-submit-btn"
+            disabled={!(emailIsValid && passwordIsValid)}
+            onClick={handleClick}
+          >
+            Enter
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
